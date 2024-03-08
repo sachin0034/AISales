@@ -25,6 +25,7 @@ import {
   Input,
   FormHelperText,
 } from "@mui/material";
+import { REACT_APP_BACK_URL } from "../../config/config";
 
 export default function SingleCall() {
   const [loading, setLoading] = useState(false);
@@ -55,14 +56,14 @@ export default function SingleCall() {
         if (admin.email.length > 0) {
           setLoading(true);
           const response = await axios.get(
-            `http://localhost:5000/admin/get-all-voices`,
+            `${REACT_APP_BACK_URL}/admin/get-all-voices`,
             {
               headers: {
                 Authorization: `Bearer ${admin.token}`,
               },
             }
           );
-          console.log(response.data)
+          console.log(response.data);
           setFormData((prevData) => ({
             ...prevData,
             voices: response.data.voices,
@@ -104,7 +105,7 @@ export default function SingleCall() {
       setLoading(true);
 
       const response = await axios.post(
-        "http://localhost:5000/admin/single-call",
+        `${REACT_APP_BACK_URL}/admin/single-call`,
         formData,
         {
           headers: {

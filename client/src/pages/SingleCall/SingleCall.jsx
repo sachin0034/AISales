@@ -63,7 +63,6 @@ export default function SingleCall() {
               },
             }
           );
-          console.log(response.data);
           setFormData((prevData) => ({
             ...prevData,
             voices: response.data.voices,
@@ -71,6 +70,7 @@ export default function SingleCall() {
           setLoading(false);
         }
       } catch (error) {
+        console.log(error)
         if (error.response && error.response.status === 401) {
           setLoading(false);
           return navigate(`/`);

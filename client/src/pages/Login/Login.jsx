@@ -27,7 +27,7 @@ import { useSelector } from "react-redux";
 const Login = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const persistedAdminData = useSelector((state) => state.admin); 
+  const persistedAdminData = useSelector((state) => state.admin);
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [alert, setAlert] = useState(null);
@@ -66,7 +66,7 @@ const Login = () => {
     try {
       setLoading(true);
       const response = await axios.post(
-        "http://localhost:5000/admin/login",
+        `${REACT_APP_BACK_URL}/admin/login`,
         adminFormData
       );
       dispatch(
